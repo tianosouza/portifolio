@@ -8,19 +8,19 @@ import {
   Typography,
   Tooltip,
 } from "@material-tailwind/react"
- 
+
 export function ProfileCard() {
   return (
     <Card className="w-96 dark:bg-slate-400 flex flex-col rounded-md shadow-lg items-center justify-center p-4">
-      <CardHeader floated={false} className="h-80 rounded-2xl">
+      <CardHeader floated={false} className=" rounded-2xl flex items-center justify-center">
         <img className="rounded-2xl" src="https://media.licdn.com/dms/image/v2/D4D03AQEPlKzSS_pe8Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1705251107524?e=1742428800&v=beta&t=Huj8sKKSvy38J6POm0yVZabxlWXO7VMnUMdgCYdLpbA" alt="profile-picture" />
       </CardHeader>
       <CardBody className="text-center">
-        <Typography variant="h4" color="blue-gray" className="mb-2">
+        <Typography variant="h4" className="mb-2 dark:text-slate-200">
           Cristiano Souza
         </Typography>
-        <div className="text-sm text-blue-gray-500 font-semibold">
-          Desenvolverdo FullStack | Ruby on Rails | Javascript | Tailwind | Bootstrap | CSS |
+        <div className="text-sm text-blue-gray-500 font-semibold dark:text-slate-200">
+          Desenvolverdo FullStack | Ruby on Rails | React | Tailwind | Bootstrap | CSS |
         </div>
       </CardBody>
       <CardFooter className="flex justify-center gap-7 pt-2 mt-2">
