@@ -1,4 +1,4 @@
-import { faFacebook, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons"
+import { faFacebook, faGithub, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   Card,
@@ -19,15 +19,15 @@ export function ProfileCard() {
         <Typography variant="h4" color="blue-gray" className="mb-2">
           Cristiano Souza
         </Typography>
-        <div className="text-sm text-blue-gray-500">
-          Backend | Ruby on Rails | Javascript | Tailwind | Bootstrap | CSS |
+        <div className="text-sm text-blue-gray-500 font-semibold">
+          Desenvolverdo FullStack | Ruby on Rails | Javascript | Tailwind | Bootstrap | CSS |
         </div>
       </CardBody>
-      <CardFooter className="flex justify-center gap-7 pt-2">
-        <Tooltip content="Like">
+      <CardFooter className="flex justify-center gap-7 pt-2 mt-2">
+        <Tooltip>
           <Typography
             as="a"
-            href="#facebook"
+            href="https://www.facebook.com/ltianosouzal"
             variant="lead"
             color="bg-blue-600"
             textGradient
@@ -35,10 +35,10 @@ export function ProfileCard() {
             <FontAwesomeIcon icon={faFacebook} className="text-blue-600 text-2xl" />
           </Typography>
         </Tooltip>
-        <Tooltip content="Follow">
+        <Tooltip>
           <Typography
             as="a"
-            href="#instagram"
+            href="https://www.instagram.com/ltianosouzal"
             variant="lead"
             color="purple"
             textGradient
@@ -46,15 +46,26 @@ export function ProfileCard() {
             <FontAwesomeIcon icon={faInstagram} className="text-rose-500 text-2xl" />
           </Typography>
         </Tooltip>
-        <Tooltip content="Follow">
+        <Tooltip>
           <Typography
             as="a"
-            href="#linkedin"
+            href="https://www.linkedin.com/in/tianosouza/"
             variant="lead"
             color="blue"
             textGradient
           >
             <FontAwesomeIcon icon={faLinkedin} className="text-blue-600 text-2xl" />
+          </Typography>
+        </Tooltip>
+        <Tooltip>
+          <Typography
+            as="a"
+            href="https://github.com/tianosouza"
+            variant="lead"
+            color="black"
+            textGradient
+          >
+            <FontAwesomeIcon icon={faGithub} className="text-2xl" />
           </Typography>
         </Tooltip>
       </CardFooter>
