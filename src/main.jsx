@@ -1,9 +1,9 @@
-import { StrictMode } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
-import { App } from './App.jsx'
+import MainRoutes from './routes'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <BrowserRouter>
+    <MainRoutes />
+  </BrowserRouter>
 )
