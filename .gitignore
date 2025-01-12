@@ -7,16 +7,19 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Diretórios de build
+node_modules/
+dist/
+dist-ssr/
+
+# Arquivos locais
 *.local
 
-# Editor directories and files
+# Diretórios e arquivos de editor
 .vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
+!.vscode/extensions.json  # Manter o arquivo de configurações de extensões do VSCode
+.idea  # Arquivos do IntelliJ / WebStorm
+.DS_Store  # Arquivo do macOS
 *.suo
 *.ntvs*
 *.njsproj
