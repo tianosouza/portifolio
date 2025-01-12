@@ -20,7 +20,7 @@ export function ProfileCard() {
           Cristiano Souza
         </Typography>
         <div className="text-sm text-blue-gray-500 font-semibold dark:text-slate-200">
-          Desenvolverdo FullStack | Ruby on Rails | React | Tailwind | Bootstrap | CSS |
+          Desenvolvedor FullStack | Ruby on Rails | React | Tailwind | Bootstrap | CSS |
         </div>
       </CardBody>
       <CardFooter className="flex justify-center gap-7 pt-2 mt-2">
