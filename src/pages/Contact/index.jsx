@@ -26,7 +26,7 @@ export default function Contact() {
           <h2 className="text-balance text-xl font-semibold tracking-tight text-gray-900 sm:text-3xl">Contact me</h2>
           <p className="mt-2 text-lg/8 text-gray-600"></p>
         </div>
-        <form action="#" className="mx-auto mt-6 max-w-xl sm:mt-10">
+        <div  className="mx-auto mt-6 max-w-xl sm:mt-10">
           <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
             <div className='mt-2'>
               <label htmlFor="first-name" className="block text-sm/6 font-semibold text-gray-900">
@@ -134,7 +134,7 @@ export default function Contact() {
               actions={actions}
             />
           </div>
-        </form>
+        </div>
       </div>
     </ContainerMain>
   )

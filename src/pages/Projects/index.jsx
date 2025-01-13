@@ -8,7 +8,7 @@ export default function Projects() {
     <ContainerMain>
       <CardDefault 
         title='Api Enem' 
-        img='src/assets/images/github-mark.svg'
+        img='https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png'
         alt='Github logo'
         description='Api que retorna dados do Enem de 2019 a 2023'
         href='https://api-enem.fly.dev/api-docs'
