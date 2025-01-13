@@ -10,7 +10,7 @@ export default function BodyApi({descripiton, stats, query, result}) {
         <span>{stats}</span>
         <ButtonComponent className="rounded-sm bg-blue-400">{query}</ButtonComponent>
       </div>
-      <pre className="bg-gray-800 dark:bg-slate-200 p-4 rounded-lg text-yellow-300">
+      <pre className="bg-gray-800 dark:bg-slate-200 p-4 rounded-lg text-yellow-300 dark:text-black">
         {result}
         {console.log(result)}
       </pre>
