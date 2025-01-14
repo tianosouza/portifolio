@@ -21,9 +21,9 @@ export default function Exams() {
   return (
     <div className="container mx-auto p-4">
       <div className="flex flex-col gap-2">
-        <div className="flex gap-2">
-          <div className='flex flex-col gap-2 flex-1'>
-            <label htmlFor="pageNumber" className='flex'>
+        <div className="flex flex-col md:flex-row gap-2">
+          <div className='flex flex-col gap-2 flex-1 dark:text-slate-200'>
+            <label htmlFor="pageNumber" className='flex flex-col md:flex-row'>
               <span>Quantidade de Páginas</span>
               <span>&#123; inteiro &#125;</span>
             </label>
@@ -36,8 +36,8 @@ export default function Exams() {
               className="border p-2 rounded mr-2 placeholder:text-xs "
             />
           </div>
-          <div className='flex flex-col gap-2 flex-1'>
-            <label htmlFor="pageSize">
+          <div className='flex flex-col gap-2 flex-1 dark:text-slate-200'>
+            <label htmlFor="pageSize" className='flex flex-col md:flex-row'>
               <span>Quantidade de Itens por Página</span>
               <span>&#123; inteiro &#125;</span>
             </label>
@@ -64,7 +64,7 @@ export default function Exams() {
           <div className="flex flex-col gap-2 mt-4">
             <div className="flex flex-col gap-2">
               <span className='font-semibold dark:text-slate-100'>Curl</span>
-              <code className="bg-black dark:bg-slate-200 dark:text-black p-1 px-6 rounded-md text-white">
+              <code className="bg-black dark:bg-slate-200 dark:text-black p-1 px-6 rounded-md text-white overflow-auto">
                 <p>curl -X <span className='text-green-500'>&#39;GET&#39;</span> \</p>
                 <span className='text-green-500'>&#39;{urlbase}?page%5Bnumber%5D={pageNumber}&page%5Bsize%5D={pageSize}&#39;</span>
                 <p>-H <span className='text-green-500'>&#39;accept: appication/json&#39;</span></p>
@@ -72,7 +72,7 @@ export default function Exams() {
             </div>
             <div className="flex flex-col gap-2">
               <span className='font-semibold dark:text-slate-100'>Url da Requisição</span>
-              <code className="bg-black dark:bg-slate-200 dark:text-black p-1 px-6 rounded-md text-white">
+              <code className="bg-black dark:bg-slate-200 dark:text-black p-1 px-6 rounded-md text-white overflow-auto">
                 {urlbase}?page%5Bnumber%5D={pageNumber}&page%5Bsize%5D={pageSize}
               </code>
             </div>
