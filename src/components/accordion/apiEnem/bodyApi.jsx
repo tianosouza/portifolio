@@ -1,19 +1,12 @@
-import ButtonComponent from "../../button"
+import Exams from "../../../services/apiEnem/exams"
 
-export default function BodyApi({descripiton, stats, query, result}) {
+export default function BodyApi({descripiton}) {
   return (
     <div className="flex flex-col gap-2">
       <span className="dark:text-white mb-2">
         {descripiton}
       </span>
-      <div className="flex justify-between items-center p-1 bg-gray-200 dark:bg-slate-200 px-3">
-        <span>{stats}</span>
-        <ButtonComponent className="rounded-sm bg-blue-400">{query}</ButtonComponent>
-      </div>
-      <pre className="bg-gray-800 dark:bg-slate-200 p-4 rounded-lg text-yellow-300 dark:text-black">
-        {result}
-        {console.log(result)}
-      </pre>
+      <Exams />
     </div>
   )
 }

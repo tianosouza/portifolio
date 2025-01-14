@@ -24,18 +24,18 @@ export function ProfileCard() {
         </div>
       </CardBody>
       <CardFooter className="flex justify-center gap-7 pt-2 mt-2">
-        <Tooltip>
+        <Tooltip content="Follow">
           <Typography
             as="a"
             href="https://www.facebook.com/ltianosouzal"
             variant="lead"
-            color="bg-blue-600"
+            color="blue"
             textGradient
           >
             <FontAwesomeIcon icon={faFacebook} className="text-blue-600 text-2xl" />
           </Typography>
         </Tooltip>
-        <Tooltip>
+        <Tooltip content="Follow">
           <Typography
             as="a"
             href="https://www.instagram.com/ltianosouzal"
@@ -46,7 +46,7 @@ export function ProfileCard() {
             <FontAwesomeIcon icon={faInstagram} className="text-rose-500 text-2xl" />
           </Typography>
         </Tooltip>
-        <Tooltip>
+        <Tooltip content="Follow">
           <Typography
             as="a"
             href="https://www.linkedin.com/in/tianosouza/"
@@ -57,7 +57,7 @@ export function ProfileCard() {
             <FontAwesomeIcon icon={faLinkedin} className="text-blue-600 text-2xl" />
           </Typography>
         </Tooltip>
-        <Tooltip>
+        <Tooltip content="Follow">
           <Typography
             as="a"
             href="https://github.com/tianosouza"

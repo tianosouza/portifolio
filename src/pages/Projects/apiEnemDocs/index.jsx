@@ -2,6 +2,7 @@ import ContainerMain from "../../../components/containerMain"
 import AccordionComponent from "../../../components/accordion"
 import HeaderApi from "../../../components/accordion/apiEnem/headerApi"
 import BodyApi from "../../../components/accordion/apiEnem/bodyApi";
+import Exams from "../../../services/apiEnem/exams";
 
 export default function ApiEnemDocs() {
   const result = [
@@ -31,45 +32,6 @@ export default function ApiEnemDocs() {
           result={JSON.stringify(result, null, 2)}
         />
       )
-    },
-    {
-      header: (
-        <HeaderApi methode="GET" path="/v1/exams/{year}" description="Retorna um exam de um ano específico" />
-      ),
-      body: (
-        <BodyApi  
-          descripiton="Retorna um exam de um ano específico"
-          stats="200"
-          query="query"
-          result={JSON.stringify(result, null, 2)}
-        />
-      )
-    },
-    {
-      header: (
-        <HeaderApi methode="GET" path="/v1/questions" description="Retorna uma lista de quetsões" />
-      ),
-      body: (
-        <BodyApi  
-          descripiton="Retorna uma lista de quesões"
-          stats="200"
-          query="query"
-          result={JSON.stringify(result, null, 2)}
-        />
-      )
-    },
-    {
-      header: (
-        <HeaderApi methode="GET" path="/v1/questions/{id}" description="Retorna uma questão específica" />
-      ),
-      body: (
-        <BodyApi  
-          descripiton="Retorna uma questão específica"
-          stats="200"
-          query="query"
-          result={JSON.stringify(result, null, 2)}
-        />
-      )
     }
   ]
 
@@ -83,6 +45,5 @@ export default function ApiEnemDocs() {
         <AccordionComponent items={accordionItems} />
       </div>
     </ContainerMain>
-  )
-  
+  )  
 }
