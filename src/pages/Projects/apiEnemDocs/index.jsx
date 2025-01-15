@@ -4,6 +4,7 @@ import HeaderApi from "../../../components/accordion/apiEnem/headerApi"
 import BodyApi from "../../../components/accordion/apiEnem/bodyApi";
 import Exams from "../../../services/apiEnem/exams";
 import Exam from "../../../services/apiEnem/exam";
+import Questions from "../../../services/apiEnem/questions";
 
 export default function ApiEnemDocs() {
   const accordionItems = [
@@ -24,6 +25,16 @@ export default function ApiEnemDocs() {
       body: (
         <BodyApi descripiton="Retorna um exam para o ano especifico">
           <Exam />
+        </BodyApi>
+      )
+    },
+    {
+      header: (
+        <HeaderApi methode="GET" path="/v1/exams/questions" description="Retorna uma lista de questões" />
+      ),
+      body: (
+        <BodyApi descripiton="Retorna uma lista de questões">
+          <Questions />
         </BodyApi>
       )
     }
