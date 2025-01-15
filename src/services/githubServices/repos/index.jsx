@@ -40,7 +40,11 @@ export default function GithubRepo({ username, repo }) {
   return (
     <Card className="p-4 rounded-md shadow-lg gap-2 justify-center items-center flex flex-col">
       <span className="font-semibold flex gap-2">
-        <img src="src/assets/images/github-mark.svg" alt="" style={{ width: 30}} />
+        <img 
+          src='https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png' 
+          alt="Logo GitHub" 
+          style={{ width: 30}} 
+        />
         <a href={repoData.html_url}>{modifyRepoName(repoData.name)}</a>
       </span>
     </Card>
