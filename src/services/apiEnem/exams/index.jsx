@@ -11,7 +11,12 @@ export default function Exams() {
     e.preventDefault()
     setIsLoading(true)
     fetch(`${urlbase}?page%5Bnumber%5D=${pageNumber}&page%5Bsize%5D=${pageSize}`)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
       .then(data => {
         setExams(data.data || [])
       })
