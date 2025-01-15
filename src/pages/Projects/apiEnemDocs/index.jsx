@@ -3,34 +3,28 @@ import AccordionComponent from "../../../components/accordion"
 import HeaderApi from "../../../components/accordion/apiEnem/headerApi"
 import BodyApi from "../../../components/accordion/apiEnem/bodyApi";
 import Exams from "../../../services/apiEnem/exams";
+import Exam from "../../../services/apiEnem/exam";
 
 export default function ApiEnemDocs() {
-  const result = [
-    {
-      "id": 0,
-      "title": "string",
-      "year": 0,
-      "disciplines": [
-        "string"
-      ],
-      "languages": [
-        "string"
-      ]
-    }
-  ]
-
   const accordionItems = [
     {
       header: (
         <HeaderApi methode="GET" path="/v1/exams" description="Retorna uma lista de exams" />
       ),
       body: (
-        <BodyApi  
-          descripiton="Retorna uma lista de exams"
-          stats="200"
-          query="query"
-          result={JSON.stringify(result, null, 2)}
-        />
+        <BodyApi descripiton="Retorna uma lista de exams">
+          <Exams />
+        </BodyApi>        
+      )
+    },
+    {
+      header: (
+        <HeaderApi methode="GET" path="/v1/exams/{year}" description="Retorna um exam para o ano especifico" />
+      ),
+      body: (
+        <BodyApi descripiton="Retorna um exam para o ano especifico">
+          <Exam />
+        </BodyApi>
       )
     }
   ]
