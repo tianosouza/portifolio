@@ -68,7 +68,7 @@ export default function Exam() {
         </div>
       )}
 
-      {!isLoading && isSuccess && exam.length > 0 && (
+      {!isLoading && isSuccess && (
         <div className="flex flex-col gap-2 mt-4">
           <div className="flex flex-col gap-2">
             <span className='font-semibold dark:text-slate-100'>Curl</span>
