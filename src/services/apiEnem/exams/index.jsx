@@ -5,6 +5,7 @@ export default function Exams() {
   const [pageNumber, setPageNumber] = useState('')
   const [pageSize, setPageSize] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
   const urlbase = 'https://api-enem.fly.dev/v1/exams'
 
   const fetchExams = (e) => {
@@ -13,14 +14,17 @@ export default function Exams() {
     fetch(`${urlbase}?page%5Bnumber%5D=${pageNumber}&page%5Bsize%5D=${pageSize}`)
       .then(response => {
         if (!response.ok) {
-          throw new Error('Network response was not ok')
+          throw new Error(`Status code: ${response.status}`)
         }
         return response.json()
       })
       .then(data => {
         setExams(data.data || [])
       })
-      .catch(error => console.error('Error fetching exams:', error))
+      .catch(error => {
+        console.error('Error fetching exams:', error)
+        setError(error.message)
+      })
       .finally(() => setIsLoading(false))
   }
 
@@ -67,6 +71,13 @@ export default function Exams() {
       {isLoading && (
         <div className="flex justify-center mt-4">
           <div className="loader border-t-4 border-blue-500 border-solid rounded-full w-8 h-8 animate-spin"></div>
+        </div>
+      )}
+
+
+      {!isLoading && error && (
+        <div className="flex justify-center mt-4">
+          <div className="text-red-500">{error}</div>
         </div>
       )}
 

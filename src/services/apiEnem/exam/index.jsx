@@ -5,26 +5,28 @@ export default function Exam() {
   const [year, setYear] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [error, setError] = useState(null)
   const urlbase = 'https://api-enem.fly.dev/v1/exams/'
 
   const fetchExam = (e) => {
     e.preventDefault()
     setIsLoading(true)
     setIsSuccess(false)
+    setError(null)
     fetch(`${urlbase}${year}`)
       .then(response => {
         if (!response.ok) {
-          throw new Error('Network response was not ok')
+          throw new Error(`Status code: ${response.status}`)
         }
         return response.json()
       })
       .then(data => {
-        console.log('API response:', data)
         setExam(data.data || [])
         setIsSuccess(true)
       })
       .catch(error => {
         console.error('Error fetching exam:', error)
+        setError(error.message)
       })
       .finally(() => setIsLoading(false))
   }
@@ -34,7 +36,7 @@ export default function Exam() {
       <form onSubmit={fetchExam} className="flex flex-col gap-2">
         <div className="flex flex-col md:flex-row gap-2">
           <div className='flex flex-col gap-2 flex-1 dark:text-slate-200'>
-            <label htmlFor="year" className='flex flex-col gap-1 md:flex-row'>
+            <label htmlFor="year" className='flex flex-col md:flex-row'>
               <span>Ano</span>
               <span>&#123; inteiro &#125;</span>
             </label>
@@ -60,7 +62,13 @@ export default function Exam() {
         </div>
       )}
 
-      {!isLoading && isSuccess && (
+      {!isLoading && error && (
+        <div className="flex justify-center mt-4">
+          <div className="text-red-500">{error}</div>
+        </div>
+      )}
+
+      {!isLoading && isSuccess && exam.length > 0 && (
         <div className="flex flex-col gap-2 mt-4">
           <div className="flex flex-col gap-2">
             <span className='font-semibold dark:text-slate-100'>Curl</span>
