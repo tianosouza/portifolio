@@ -9,7 +9,7 @@ export default function AccordionComponent({ items }) {
   }
 
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-6'>
       {items.map((item, index) => (
         <Accordion key={index} open={open === index} className="p-1 border rounded-md border-slate-900 dark:border-gray-400">
           <AccordionHeader onClick={() => handleOpen(index)} className=" p-1 border rounded-sm border-slate-900 dark:border-gray-400">

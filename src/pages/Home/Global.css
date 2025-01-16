@@ -8,11 +8,6 @@
   box-sizing: border-box;
 }
 
-label {
-  font-size: .4rem;
-  font-weight: 700;
-}
-
 pre::-webkit-scrollbar, body::-webkit-scrollbar {
   display: none;
 }

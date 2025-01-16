@@ -8,6 +8,7 @@ import {
   Typography,
   Tooltip,
 } from "@material-tailwind/react"
+import Download from "../dowload";
 
 export function ProfileCard() {
   return (
@@ -68,6 +69,7 @@ export function ProfileCard() {
             <FontAwesomeIcon icon={faGithub} className="text-2xl" />
           </Typography>
         </Tooltip>
+        <Download />
       </CardFooter>
     </Card>
   );

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { Card } from "@material-tailwind/react"
-import { width } from "@fortawesome/free-brands-svg-icons/fa42Group"
 
 export default function GithubRepo({ username, repo }) {
   const [repoData, setRepoData] = useState(null)
