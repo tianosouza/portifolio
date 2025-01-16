@@ -1,14 +1,14 @@
-import { Tooltip } from "@material-tailwind/react";
+import { Tooltip } from "@material-tailwind/react"
 
 export default function Download() {
   const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = 'public/assets/CV_CRISTIANO_SOUZA.pdf';
-    link.download = 'CV_CRISTIANO_SOUZA.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+    const link = document.createElement('a')
+    link.href = import.meta.env.VITE_URL_DOWNLOAD
+    link.download = 'CV_CRISTIANO_SOUZA.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 
   return (
 
@@ -24,5 +24,5 @@ export default function Download() {
         </button>
       </Tooltip>
     </div>
-  );
+  )
 }
