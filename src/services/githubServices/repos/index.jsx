@@ -8,11 +8,11 @@ export default function GithubRepo({ username, repo }) {
 
   useEffect(() => {
     fetch(`https://api.github.com/repos/${username}/${repo}`)
-      .then((res) => {
-        if (!res.ok) {
+      .then((response) => {
+        if (!response.ok) {
           throw new Error('Network response was not ok')
         }
-        return res.json()
+        return response.json()
       })
       .then((data) => {
         setRepoData(data)

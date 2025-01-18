@@ -1,34 +1,45 @@
 import React, { useState } from 'react'
+import { GetExam } from '../../../../services/apiEnem/exams/GetExams'
 
 export default function Exam() {
   const [exam, setExam] = useState([])
   const [year, setYear] = useState('')
+  const [visible, setVisible] = useState(false)
+  const [copied, setCopied] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [error, setError] = useState(null)
   const urlbase = 'https://api-enem.fly.dev/v1/exams/'
 
-  const fetchExam = (e) => {
+  const clipBoard = (url) => {
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err)
+      })
+  }
+
+  const fetchExam = async (e) => {
     e.preventDefault()
     setIsLoading(true)
     setIsSuccess(false)
     setError(null)
-    fetch(`${urlbase}${year}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Status code: ${response.status}`)
-        }
-        return response.json()
-      })
-      .then(data => {
-        setExam(data.data || [])
-        setIsSuccess(true)
-      })
-      .catch(error => {
-        console.error('Error fetching exam:', error)
-        setError(error.message)
-      })
-      .finally(() => setIsLoading(false))
+
+    try{
+      const data = await GetExam()
+      setExam(data.data || [])
+      setIsSuccess(true)      
+    }
+    catch(err){
+      console.error('Error fetching exam:', err)
+      setError(err.message)
+    } 
+    finally{
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -87,7 +98,23 @@ export default function Exam() {
           </div> 
           <div className="flex flex-col gap-2">
             <span className='font-semibold dark:text-slate-100'>Url da Requisição</span>
-            <code className="bg-black dark:bg-slate-200 dark:text-black p-1 px-6 rounded-md text-white overflow-auto">
+            <code 
+              className="bg-black dark:bg-slate-200 dark:text-black p-2 px-6 rounded-md text-white overflow-auto relative" 
+              onMouseEnter={() => setVisible(true)} 
+              onMouseLeave={() => setVisible(false)}
+            >
+              {visible && (
+                <div className='absolute top-1.5 cursor-pointer right-2' onClick={() => clipBoard(`${urlbase}${year}`)}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+                  </svg>
+                  {copied && (
+                    <span className="absolute top-0 right-0 mt-8 mr-2 bg-gray-700 text-white text-xs rounded p-1">
+                      Copiado!
+                    </span>
+                  )}
+                </div>
+              )}
               {urlbase}{year}
             </code>
           </div> 

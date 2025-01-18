@@ -1,10 +1,10 @@
 import ContainerMain from "../../../components/containerMain"
 import AccordionComponent from "../../../components/accordion"
 import HeaderApi from "../../../components/accordion/apiEnem/headerApi"
-import BodyApi from "../../../components/accordion/apiEnem/bodyApi";
-import Exams from "../../../services/apiEnem/exams";
-import Exam from "../../../services/apiEnem/exam";
-import Questions from "../../../services/apiEnem/questions";
+import BodyApi from "../../../components/accordion/apiEnem/bodyApi"
+import Exams from "../../../components/accordion/apiEnem/exams/Exams"
+import Exam from "../../../components/accordion/apiEnem/exams/Exam"
+import Questions from "../../../components/accordion/apiEnem/questions/Questions"
 
 export default function ApiEnemDocs() {
   const accordionItems = [

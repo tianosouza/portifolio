@@ -32,6 +32,7 @@ export default function Header() {
           <Link to="/" className="hover:underline-offset-1">Home</Link>         
           <Link to="/projects" className="hover:underline-offset-1">Projects</Link>
           <Link to="/contact" className="hover:underline-offset-1">Contact</Link>
+          <Link to="/blog" className="hover:underline-offset-1">Blog</Link>
         </div>
         <div className="lg:flex lg:flex-1 lg:justify-end">
           <ThemeToggle />

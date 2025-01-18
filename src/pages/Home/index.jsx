@@ -5,7 +5,7 @@ import './Global.css'
 export default function Home() {
   return (
     <ContainerMain>
-      <ProfileCard />      
+      <ProfileCard />
     </ContainerMain>
   );
 }

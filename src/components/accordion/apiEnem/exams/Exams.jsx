@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
+import { GetExams } from "../../../../services/apiEnem/exams/GetExams"
 
 export default function Exams() {
   const [exams, setExams] = useState([])
@@ -8,24 +9,22 @@ export default function Exams() {
   const [error, setError] = useState(null)
   const urlbase = 'https://api-enem.fly.dev/v1/exams'
 
-  const fetchExams = (e) => {
+  const fetchExams = async (e) => {
     e.preventDefault()
     setIsLoading(true)
-    fetch(`${urlbase}?page%5Bnumber%5D=${pageNumber}&page%5Bsize%5D=${pageSize}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Status code: ${response.status}`)
-        }
-        return response.json()
-      })
-      .then(data => {
-        setExams(data.data || [])
-      })
-      .catch(error => {
-        console.error('Error fetching exams:', error)
-        setError(error.message)
-      })
-      .finally(() => setIsLoading(false))
+    setError(null)
+
+    try {
+      const data = await GetExams(pageNumber, pageSize)
+      setExams(data.data || [])      
+    }
+    catch(err) {
+      console.error('Error fetching exams:', err)
+      setError(err.message)
+    }
+    finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -73,7 +72,6 @@ export default function Exams() {
           <div className="loader border-t-4 border-blue-500 border-solid rounded-full w-8 h-8 animate-spin"></div>
         </div>
       )}
-
 
       {!isLoading && error && (
         <div className="flex justify-center mt-4">

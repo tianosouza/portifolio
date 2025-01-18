@@ -1,34 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState } from "react"
+import { GetQuestions } from "../../../../services/apiEnem/questions/GetQuestions"
 
 export default function Questions() {
-  const [questions, setQuestions] = useState([]);
-  const [pageNumber, setPageNumber] = useState('');
-  const [pageSize, setPageSize] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const urlbase = 'https://api-enem.fly.dev/v1/questions';
+  const [questions, setQuestions] = useState([])
+  const [pageNumber, setPageNumber] = useState('')
+  const [pageSize, setPageSize] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const urlbase = 'https://api-enem.fly.dev/v1/questions'
 
-  const fetchQuestions = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError(null);
-    fetch(`${urlbase}?page%5Bnumber%5D=${pageNumber}&page%5Bsize%5D=${pageSize}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Status code: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        setQuestions(data.data || []);
-      })
-      .catch(error => {
-        setError(error.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
+  const fetchQuestions = async (e) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const data = await GetQuestions(pageNumber, pageSize)
+      setQuestions(data.data || [])
+    }
+    catch(err) {
+      console.error('Error fetching questions:', err)
+      setError(err.message)
+    }
+    finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <div className="container mx-auto p-4">
@@ -37,7 +34,7 @@ export default function Questions() {
           <div className='flex flex-col gap-2 flex-1 dark:text-slate-200'>
             <label htmlFor="pageNumber" className='flex flex-col md:flex-row'>
               <span>Quantidade de Páginas</span>
-              <span>&#123; inteiro &#125;</span>
+              <span>&#123 inteiro &#125</span>
             </label>
             <input
               name='pageNumber'
@@ -52,7 +49,7 @@ export default function Questions() {
           <div className='flex flex-col gap-2 flex-1 dark:text-slate-200'>
             <label htmlFor="pageSize" className='flex flex-col md:flex-row'>
               <span>Quantidade de Itens por Página</span>
-              <span>&#123; inteiro &#125;</span>
+              <span>&#123 inteiro &#125</span>
             </label>
             <input
               name='pageSize'
@@ -94,7 +91,7 @@ export default function Questions() {
                 <span style={{ color: 'rgb(162, 252, 162)' }}>'GET'</span>
                 <span> \</span>
                 <span>  </span>
-                <span style={{ color: 'rgb(162, 252, 162)' }}>'{urlbase}?page%5Bnumber%5D={pageNumber}&amp;page%5Bsize%5D={pageSize}'</span>
+                <span style={{ color: 'rgb(162, 252, 162)' }}>'{urlbase}?page%5Bnumber%5D={pageNumber}&amppage%5Bsize%5D={pageSize}'</span>
                 <span> \</span>
                 <span>  -H </span>
                 <span style={{ color: 'rgb(162, 252, 162)' }}>'accept: application/json'</span>
@@ -115,5 +112,5 @@ export default function Questions() {
         </div>
       )}
     </div>
-  );
+  )
 }
