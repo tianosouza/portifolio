@@ -15,8 +15,15 @@ import ThemeToggle from '../toggle'
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const handleActive = (path) => {
+    if (window.location.pathname === path) {
+      return 'text-slate-900 dark:text-slate-200'
+    }
+    return 'text-slate-500 dark:text-slate-400'
+  }
+
   return (
-    <header className="bg-slate-300 shadow-md dark:bg-slate-900">
+    <header className="shadow-lg  text-slate-200 font-bold bg-color-primary-light dark:bg-color-primary-dark">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:hidden">
           <button
